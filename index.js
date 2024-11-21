@@ -105,8 +105,10 @@ client.on('interactionCreate', async (interaction) => {
                         if (reaction.emoji.name === '✅') {
                             const mainChannel = await client.channels.fetch(process.env.MAIN_CHANNEL_ID);
                             if (mainChannel) {
-                                await mainChannel.send({ embeds: [embed] });
                                 await testChannel.send('Embed sent to the main channel!');
+                                await mainChannel.send(`${asin}`);
+                                await mainChannel.send({ embeds: [embed] });
+                                await mainChannel.send(`<@&${process.env.roleId}> `);
                             }
                         } else if (reaction.emoji.name === '❌') {
                             await testChannel.send('Embed cancelled.');
